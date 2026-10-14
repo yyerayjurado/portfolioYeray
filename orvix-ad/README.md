@@ -1,9 +1,10 @@
 # ORVIX STUDIO · Vídeos promocionales (Remotion)
 
-Proyecto Remotion con seis piezas:
+Proyecto Remotion con siete piezas:
 
 | Composición | Formato | Duración | Vídeo renderizado |
 |---|---|---|---|
+| `OrvixFilm` | 1080×1920 · 9:16 · 30 fps | 35 s (1050 frames) · solo música | `video/orvix-a-different-perspective.mp4` |
 | `OrvixReel` | 1080×1920 · 9:16 · 30 fps | 45 s (1350 frames) · solo música | `video/orvix-studio-reel-quienes-somos.mp4` |
 | `OrvixAbout` | 1920×1080 · 16:9 · 30 fps | 67,9 s (2038 frames) | `video/orvix-studio-quienes-somos.mp4` + `video/orvix-studio-quienes-somos.srt` |
 | `OrvixWelcome` | 1920×1080 · 16:9 · 30 fps | 76,2 s (2287 frames) | `video/orvix-studio-bienvenida-16x9.mp4` + `video/orvix-studio-bienvenida.srt` |
@@ -28,6 +29,29 @@ npx remotion render OrvixPromoVertical out/orvix-studio-promo-9x16.mp4 --codec=h
 npx remotion still  OrvixPromo out/frame.png --frame=1250            # fotograma suelto
 python3 scripts/promo_soundtrack.py              # regenera la música (requiere numpy)
 ```
+
+## OrvixFilm — «Orvix — A different perspective» (brand film vertical)
+
+Dirección de arte editorial: piezas impresas (pliegos de papel con textura, carteles azules con marcas de
+corte y pies de imprenta) recorridas por una cámara simulada; cambios de perspectiva literales (la tarjeta
+que gira, los reencuadres de una misma composición) y tipografía expresiva Space Grotesk + Instrument Serif
+cursiva. Sin partículas, nodos ni formas flotantes. Grano de película sobre toda la pieza.
+
+```bash
+python3 scripts/film_music.py                         # banda sonora y efectos (requiere numpy)
+npx remotion render OrvixFilm out/film.mp4 --codec=h264 --crf=16
+```
+
+| Tiempo | Escena | Archivo (`src/film/scenes/`) |
+|---|---|---|
+| 0–5 s | Identidad · la cámara recorre un pliego y un cartel impreso hasta descubrir el logotipo | `F1Identity.tsx` |
+| 5–11 s | Otra perspectiva · «NO SE TRATA SOLO DE CREAR» → la tarjeta gira → «SE TRATA DE CÓMO LO IMAGINAS» | `F2Perspective.tsx` |
+| 11–19 s | Nuestra forma de ver · «UNA VISIÓN» reencuadrada 4 veces → mosaico «INFINITAS POSIBILIDADES» | `F3Vision.tsx` |
+| 19–27 s | Personalidad · serie de carteles → «CREATIVIDAD CON INTENCIÓN» → composición depurada | `F4Personality.tsx` |
+| 27–35 s | Firma · un pliego se retira y deja el logotipo · «UNA DIFERENTE FORMA DE CREAR» · «ORVIXSTUDIO.ES» | `F5Signature.tsx` |
+
+Materiales compartidos (grano, papel, superficie azul, marcas de corte, pies) en `src/film/materials.tsx`;
+paleta, tipografías y acentos musicales (`HIT`) en `src/film/theme.ts`.
 
 ## OrvixReel — «Quiénes somos» vertical (motion graphics + música, sin locución)
 
@@ -169,6 +193,7 @@ no muestran clientes, cifras ni resultados reales.
 | Logotipo `public/orvix-logo.png` | Extraído de la imagen oficial facilitada por Orvix Studio | Propiedad de Orvix Studio |
 | Space Grotesk (`public/fonts/space-grotesk-*`) | Florian Karsten, vía Fontsource | SIL Open Font License 1.1 |
 | JetBrains Mono (`public/fonts/jetbrains-mono-*`) | JetBrains, vía Fontsource | SIL Open Font License 1.1 |
+| Instrument Serif (`public/fonts/instrument-serif-*`) | Instrument, vía Fontsource | SIL Open Font License 1.1 |
 | Música y efectos (`public/audio/*.wav`) | Sintetizados por `scripts/*soundtrack.py` y `scripts/welcome_music.py` para este proyecto | Original, sin material de terceros |
 | Locución (`public/audio/welcome-voice.wav`) | Generada con Kokoro-82M (hexgrad) vía kokoro-onnx, voz `em_alex` | Modelo Apache-2.0; audio generado para este proyecto |
 | Mockups, iconos, 3D | Creados con CSS/SVG en el propio código | Original |
