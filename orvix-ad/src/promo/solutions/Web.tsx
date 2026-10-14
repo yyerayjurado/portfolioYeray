@@ -76,7 +76,7 @@ const Contact: React.FC = () => (
 // Versión móvil (9:16): la misma web, recompuesta en un teléfono.
 const PW = 560;
 const PH = 860;
-const PhoneSite: React.FC<{ scroll: number }> = ({ scroll }) => (
+export const PhoneSite: React.FC<{ scroll: number }> = ({ scroll }) => (
   <div style={{ width: PW, height: PH, borderRadius: 64, background: "#16171C", padding: 14, boxSizing: "border-box", boxShadow: "0 40px 80px rgba(0,0,0,0.55)", border: `1.5px solid ${P.line2}` }}>
     <div style={{ width: "100%", height: "100%", borderRadius: 52, background: P.paper, overflow: "hidden", position: "relative" }}>
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 96, paddingTop: 30, boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "30px 34px 0", background: P.paper, zIndex: 3, borderBottom: "1px solid #E2E2DD" }}>

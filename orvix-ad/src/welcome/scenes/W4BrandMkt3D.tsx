@@ -4,7 +4,7 @@ import { CUES, FONT, MONO, W, ci, easeInOut, easeOut, local } from "../theme";
 import { BlueBg, Chip, Shapes, Title, useV } from "../ui";
 
 // Escena 4 · Branding, marketing digital y diseño 3D (tres fases enlazadas por un desplazamiento lateral).
-const Brand: React.FC<{ f: number }> = ({ f }) => (
+export const Brand: React.FC<{ f: number }> = ({ f }) => (
   <div style={{ position: "relative", width: 1000, height: 640 }}>
     <svg width={1000} height={640} style={{ position: "absolute" }}>
       {[0, 1, 2, 3].map((i) => (

@@ -1,9 +1,10 @@
 # ORVIX STUDIO · Vídeos promocionales (Remotion)
 
-Proyecto Remotion con siete piezas:
+Proyecto Remotion con ocho piezas:
 
 | Composición | Formato | Duración | Vídeo renderizado |
 |---|---|---|---|
+| `OrvixPresentation` | 1080×1920 · 9:16 · 30 fps | 40 s (1200 frames) · solo música | `video/orvix-studio-presentacion.mp4` |
 | `OrvixFilm` | 1080×1920 · 9:16 · 30 fps | 35 s (1050 frames) · solo música | `video/orvix-a-different-perspective.mp4` |
 | `OrvixReel` | 1080×1920 · 9:16 · 30 fps | 45 s (1350 frames) · solo música | `video/orvix-studio-reel-quienes-somos.mp4` |
 | `OrvixAbout` | 1920×1080 · 16:9 · 30 fps | 67,9 s (2038 frames) | `video/orvix-studio-quienes-somos.mp4` + `video/orvix-studio-quienes-somos.srt` |
@@ -29,6 +30,26 @@ npx remotion render OrvixPromoVertical out/orvix-studio-promo-9x16.mp4 --codec=h
 npx remotion still  OrvixPromo out/frame.png --frame=1250            # fotograma suelto
 python3 scripts/promo_soundtrack.py              # regenera la música (requiere numpy)
 ```
+
+## OrvixPresentation — presentación de marca vertical (quiénes somos y qué hacemos)
+
+```bash
+python3 scripts/presentation_music.py
+npx remotion render OrvixPresentation out/presentacion.mp4 --codec=h264 --crf=17
+```
+
+| Tiempo | Escena | Archivo (`src/presentation/scenes/`) |
+|---|---|---|
+| 0–5 s | «HOLA, SOMOS ORVIX STUDIO» · «UN ESTUDIO DIGITAL CREATIVO» | `P1Hello.tsx` |
+| 5–10 s | «AYUDAMOS A LOS NEGOCIOS A CRECER EN EL MUNDO DIGITAL» · boceto → proyecto | `P2What.tsx` |
+| 10–16 s | «DISEÑAMOS Y DESARROLLAMOS TU WEB» · escritorio + móvil con scroll | `P3Web.tsx` |
+| 16–22 s | «CREAMOS TU TIENDA ONLINE» → «CONSTRUIMOS LA IDENTIDAD DE TU MARCA» | `P4ShopBrand.tsx` |
+| 22–28 s | «AUTOMATIZAMOS PROCESOS CON INTELIGENCIA ARTIFICIAL» · tareas → flujo → lista ordenada | `P5Auto.tsx` |
+| 28–33 s | «DISEÑO, TECNOLOGÍA E INNOVACIÓN» · «SOLUCIONES DIGITALES PENSADAS PARA TU NEGOCIO» | `P6Philosophy.tsx` |
+| 33–40 s | «¿EMPEZAMOS CON TU PROYECTO?» · «DESCUBRE ORVIX STUDIO» · orvixstudio.es | `P7Cta.tsx` |
+
+Reutiliza piezas del proyecto (web móvil `PhoneSite`, producto 3D `ProductBox`, identidad `Brand`,
+fondo y tipografía de `src/welcome/ui.tsx`). Maquetas con marca genérica «tu marca»; sin cifras ni clientes.
 
 ## OrvixFilm — «Orvix — A different perspective» (brand film vertical)
 

@@ -8,6 +8,8 @@ import { OrvixWelcome, WELCOME_FRAMES } from "./welcome/Welcome";
 import { ABOUT_FRAMES, OrvixAbout } from "./about/About";
 import { OrvixReel } from "./reel/Reel";
 import { OrvixFilm } from "./film/Film";
+import { OrvixPresentation } from "./presentation/Presentation";
+import { TOTAL as PRES_TOTAL } from "./presentation/theme";
 import { TOTAL as FILM_TOTAL } from "./film/theme";
 import { TOTAL as REEL_TOTAL } from "./reel/theme";
 import { TOTAL as CINE_TOTAL } from "./cinematic/theme";
@@ -22,6 +24,7 @@ const V = { width: 1080, height: 1920, fps: 30 };
 
 export const RemotionRoot: React.FC = () => (
   <>
+    <Composition id="OrvixPresentation" component={OrvixPresentation} durationInFrames={PRES_TOTAL} width={1080} height={1920} fps={30} />
     <Composition id="OrvixFilm" component={OrvixFilm} durationInFrames={FILM_TOTAL} width={1080} height={1920} fps={30} />
     <Composition id="OrvixReel" component={OrvixReel} durationInFrames={REEL_TOTAL} width={1080} height={1920} fps={30} />
     <Composition id="OrvixAbout" component={OrvixAbout} durationInFrames={ABOUT_FRAMES} width={1920} height={1080} fps={30} />
