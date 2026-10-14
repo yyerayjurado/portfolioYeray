@@ -1,0 +1,239 @@
+{
+  "duration": 76.214,
+  "fps": 30,
+  "durationInFrames": 2287,
+  "sentences": [
+    {
+      "text": "El mundo digital evoluciona constantemente.",
+      "start": 1.6,
+      "end": 4.46,
+      "para": 0
+    },
+    {
+      "text": "Y tu negocio necesita algo más que estar presente en internet.",
+      "start": 4.88,
+      "end": 8.58,
+      "para": 0
+    },
+    {
+      "text": "En Orvix Studio, unimos creatividad, diseño y tecnología para construir soluciones digitales pensadas para empresas y emprendedores.",
+      "start": 9.43,
+      "end": 17.793,
+      "para": 1
+    },
+    {
+      "text": "Diseñamos y desarrollamos páginas web que representan tu marca.",
+      "start": 18.643,
+      "end": 22.643,
+      "para": 2
+    },
+    {
+      "text": "Creamos tiendas online con Shopify para ayudarte a vender por internet.",
+      "start": 23.063,
+      "end": 27.363,
+      "para": 2
+    },
+    {
+      "text": "Y trabajamos la identidad visual para que tu negocio tenga una imagen propia y reconocible.",
+      "start": 28.213,
+      "end": 34.023,
+      "para": 3
+    },
+    {
+      "text": "También desarrollamos soluciones de marketing digital y diseño 3D, adaptadas a las necesidades de cada proyecto.",
+      "start": 34.443,
+      "end": 41.773,
+      "para": 3
+    },
+    {
+      "text": "Y damos un paso más: incorporamos automatizaciones e inteligencia artificial para ayudar a simplificar tareas y conectar procesos de negocio.",
+      "start": 42.623,
+      "end": 51.543,
+      "para": 4
+    },
+    {
+      "text": "Nuestro objetivo es convertir tus ideas en soluciones digitales útiles, cuidadas y preparadas para evolucionar contigo.",
+      "start": 52.393,
+      "end": 59.713,
+      "para": 5
+    },
+    {
+      "text": "Somos Orvix Studio.",
+      "start": 60.563,
+      "end": 62.174,
+      "para": 6
+    },
+    {
+      "text": "Diseño, tecnología e innovación al servicio de tu negocio.",
+      "start": 62.594,
+      "end": 66.404,
+      "para": 6
+    },
+    {
+      "text": "Descubre todo lo que podemos construir juntos en orvixstudio.es.",
+      "start": 66.824,
+      "end": 71.214,
+      "para": 6
+    }
+  ],
+  "chunks": [
+    {
+      "text": "El mundo digital evoluciona constantemente.",
+      "start": 1.6,
+      "end": 4.46
+    },
+    {
+      "text": "Y tu negocio necesita algo más que estar presente en internet.",
+      "start": 4.88,
+      "end": 8.58
+    },
+    {
+      "text": "En Orvix Studio, unimos creatividad, diseño y tecnología",
+      "start": 9.43,
+      "end": 13.11
+    },
+    {
+      "text": "para construir soluciones digitales",
+      "start": 13.11,
+      "end": 15.58
+    },
+    {
+      "text": "pensadas para empresas y emprendedores.",
+      "start": 15.58,
+      "end": 17.793
+    },
+    {
+      "text": "Diseñamos y desarrollamos páginas web",
+      "start": 18.643,
+      "end": 21.263
+    },
+    {
+      "text": "que representan tu marca.",
+      "start": 21.263,
+      "end": 22.643
+    },
+    {
+      "text": "Creamos tiendas online con Shopify",
+      "start": 23.063,
+      "end": 25.083
+    },
+    {
+      "text": "para ayudarte a vender por internet.",
+      "start": 25.083,
+      "end": 27.363
+    },
+    {
+      "text": "Y trabajamos la identidad visual",
+      "start": 28.213,
+      "end": 30.493
+    },
+    {
+      "text": "para que tu negocio tenga una imagen propia y reconocible.",
+      "start": 30.493,
+      "end": 34.023
+    },
+    {
+      "text": "También desarrollamos soluciones de marketing digital y diseño 3D,",
+      "start": 34.443,
+      "end": 39.183
+    },
+    {
+      "text": "adaptadas a las necesidades de cada proyecto.",
+      "start": 39.183,
+      "end": 41.773
+    },
+    {
+      "text": "Y damos un paso más:",
+      "start": 42.623,
+      "end": 44.363
+    },
+    {
+      "text": "incorporamos automatizaciones e inteligencia artificial",
+      "start": 44.363,
+      "end": 47.853
+    },
+    {
+      "text": "para ayudar a simplificar tareas",
+      "start": 47.853,
+      "end": 49.823
+    },
+    {
+      "text": "y conectar procesos de negocio.",
+      "start": 49.823,
+      "end": 51.543
+    },
+    {
+      "text": "Nuestro objetivo es convertir tus ideas",
+      "start": 52.393,
+      "end": 54.813
+    },
+    {
+      "text": "en soluciones digitales útiles, cuidadas",
+      "start": 54.813,
+      "end": 57.292
+    },
+    {
+      "text": "y preparadas para evolucionar contigo.",
+      "start": 57.292,
+      "end": 59.713
+    },
+    {
+      "text": "Somos Orvix Studio.",
+      "start": 60.563,
+      "end": 62.174
+    },
+    {
+      "text": "Diseño, tecnología e innovación",
+      "start": 62.594,
+      "end": 64.934
+    },
+    {
+      "text": "al servicio de tu negocio.",
+      "start": 64.934,
+      "end": 66.404
+    },
+    {
+      "text": "Descubre todo lo que podemos construir juntos en orvixstudio.es.",
+      "start": 66.824,
+      "end": 71.214
+    }
+  ],
+  "paragraphs": [
+    {
+      "start": 1.6,
+      "end": 8.58
+    },
+    {
+      "start": 9.43,
+      "end": 17.793
+    },
+    {
+      "start": 18.643,
+      "end": 27.363
+    },
+    {
+      "start": 28.213,
+      "end": 41.773
+    },
+    {
+      "start": 42.623,
+      "end": 51.543
+    },
+    {
+      "start": 52.393,
+      "end": 59.713
+    },
+    {
+      "start": 60.563,
+      "end": 71.214
+    }
+  ],
+  "anchors": {
+    "creatividad": 10.923,
+    "diseño": 12.02,
+    "tecnología": 12.297,
+    "marketing": 36.717,
+    "tres": 38.297
+  },
+  "voice": "Kokoro-82M · em_alex · es"
+}
