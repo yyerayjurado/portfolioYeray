@@ -1,9 +1,10 @@
 # ORVIX STUDIO · Vídeos promocionales (Remotion)
 
-Proyecto Remotion con cinco piezas:
+Proyecto Remotion con seis piezas:
 
 | Composición | Formato | Duración | Vídeo renderizado |
 |---|---|---|---|
+| `OrvixReel` | 1080×1920 · 9:16 · 30 fps | 45 s (1350 frames) · solo música | `video/orvix-studio-reel-quienes-somos.mp4` |
 | `OrvixAbout` | 1920×1080 · 16:9 · 30 fps | 67,9 s (2038 frames) | `video/orvix-studio-quienes-somos.mp4` + `video/orvix-studio-quienes-somos.srt` |
 | `OrvixWelcome` | 1920×1080 · 16:9 · 30 fps | 76,2 s (2287 frames) | `video/orvix-studio-bienvenida-16x9.mp4` + `video/orvix-studio-bienvenida.srt` |
 | `OrvixWelcomeVertical` | 1080×1920 · 9:16 · 30 fps | 76,2 s | `video/orvix-studio-bienvenida-9x16.mp4` |
@@ -27,6 +28,28 @@ npx remotion render OrvixPromoVertical out/orvix-studio-promo-9x16.mp4 --codec=h
 npx remotion still  OrvixPromo out/frame.png --frame=1250            # fotograma suelto
 python3 scripts/promo_soundtrack.py              # regenera la música (requiere numpy)
 ```
+
+## OrvixReel — «Quiénes somos» vertical (motion graphics + música, sin locución)
+
+Para Reels, TikTok y Shorts. La historia la cuentan la tipografía cinética y la música; todos los cortes y
+apariciones caen en golpes de una pista original a 120 BPM (`SC` y `HITS` en `src/reel/theme.ts`).
+Textos dentro de la zona segura vertical (y 250–1450, márgenes de 90 px).
+
+```bash
+python3 scripts/reel_music.py                       # música y efectos (requiere numpy)
+npx remotion render OrvixReel out/reel.mp4 --codec=h264 --crf=18
+```
+
+| Tiempo | Escena | Archivo (`src/reel/scenes/`) |
+|---|---|---|
+| 0–5 s | El comienzo · «TODO EMPIEZA CON UNA IDEA» | `R1Start.tsx` |
+| 5–12 s | Quiénes somos · logotipo · CREATIVIDAD / DISEÑO / TECNOLOGÍA (8, 9, 10 s) | `R2Who.tsx` |
+| 12–20 s | Nuestra esencia · fragmentación → sistema modular · «IDEAS QUE SE CONVIERTEN EN REALIDAD» | `R3Essence.tsx` |
+| 20–29 s | Nuestra filosofía · PENSAR / CREAR / TRANSFORMAR (21, 23, 25 s) · «TECNOLOGÍA CON PROPÓSITO» | `R4Philosophy.tsx` |
+| 29–36 s | Miramos hacia delante · clímax · «EL FUTURO SE CONSTRUYE CON IDEAS» | `R5Forward.tsx` |
+| 36–45 s | Cierre · logotipo · «IDEAS QUE EVOLUCIONAN» · «ORVIXSTUDIO.ES» | `R6Close.tsx` |
+
+Para usar otra música: sustituye `public/audio/reel-music.wav` o cambia `REEL_AUDIO` en `src/reel/Reel.tsx`.
 
 ## OrvixAbout — «Quiénes somos» (motion graphics, locución y subtítulos)
 
