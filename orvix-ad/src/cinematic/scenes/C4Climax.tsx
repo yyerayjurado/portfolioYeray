@@ -90,17 +90,17 @@ export const C4Climax: React.FC = () => {
         {WORDS.map((w, i) => {
           const at = HITS.climaxWords[i];
           const next = HITS.climaxWords[i + 1] ?? HITS.climaxConverge;
-          const vis = f >= at - 1 && f < next;
+          const vis = f >= at - 5 && f < next;
           return vis ? (
-            <div key={w} style={{ position: "absolute", overflow: "hidden", padding: "0 0 12px" }}>
+            <div key={w} style={{ position: "absolute", overflow: "hidden", padding: "0 40px 12px", scale: `${ci(f, [at, at + 30], [1.06, 1])}` }}>
               <div
                 style={{
                   fontFamily: FONT,
                   fontWeight: 700,
                   fontSize: V ? 104 : 168,
-                  letterSpacing: `${ci(f, [at, at + 24], [0.08, -0.03])}em`,
+                  letterSpacing: `${ci(f, [at - 5, at + 24], [0.04, -0.02])}em`,
                   color: i === 2 ? P.accent : P.text,
-                  transform: `translateY(${ci(f, [at, at + 10], [100, 0], easeOut)}%) scale(${ci(f, [at, at + 30], [1.06, 1])})`,
+                  transform: `translateY(${ci(f, [at - 5, at + 3], [100, 0], easeOut) + ci(f, [next - 5, next - 1], [0, -100], easeIn)}%)`,
                   textShadow: "0 10px 40px rgba(0,0,0,0.6)",
                 }}
               >
