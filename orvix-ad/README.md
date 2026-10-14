@@ -1,33 +1,65 @@
-# ORVIX STUDIO — «TU NEGOCIO. SIN LÍMITES.»
+# ORVIX STUDIO · Vídeos promocionales (Remotion)
 
-Anuncio vertical en Remotion · 1080×1920 · 30 fps · 30 s (900 frames).
+Proyecto Remotion con dos piezas:
 
-**Vídeo renderizado:** `video/orvix-studio-anuncio-9x16.mp4`
+| Composición | Formato | Duración | Vídeo renderizado |
+|---|---|---|---|
+| `OrvixPromo` | 1920×1080 · 16:9 · 30 fps | 43 s (1290 frames) | `video/orvix-studio-promo-16x9.mp4` |
+| `OrvixPromoVertical` | 1080×1920 · 9:16 · 30 fps | 43 s (1290 frames) | `video/orvix-studio-promo-9x16.mp4` |
+| `OrvixAd` (anuncio anterior) | 1080×1920 · 9:16 · 30 fps | 30 s (900 frames) | `video/orvix-studio-anuncio-9x16.mp4` |
+
+`OrvixPromo` y `OrvixPromoVertical` usan el mismo componente: cada escena consulta `useLayout()`
+y se **recompone** para móvil (texto arriba, visual debajo; web en teléfono, tienda apilada con
+carrito inferior, flujo de IA de arriba abajo), en lugar de recortar el horizontal.
 
 ## Comandos
 
 ```bash
 npm i
-npm run dev                          # Remotion Studio (composición "OrvixAd")
-npx remotion render OrvixAd out/orvix-studio-anuncio-9x16.mp4 --codec=h264 --crf=18
-npx remotion still OrvixAd out/frame.png --frame=860   # fotograma suelto
-python3 scripts/soundtrack.py        # regenera la banda sonora (requiere numpy)
+npm run dev                                      # Remotion Studio (elige la composición)
+npx remotion render OrvixPromo         out/orvix-studio-promo-16x9.mp4 --codec=h264 --crf=18
+npx remotion render OrvixPromoVertical out/orvix-studio-promo-9x16.mp4 --codec=h264 --crf=18
+npx remotion still  OrvixPromo out/frame.png --frame=1250            # fotograma suelto
+python3 scripts/promo_soundtrack.py              # regenera la música (requiere numpy)
 ```
 
-## Estructura
+## Concepto: «La tecnología adecuada transforma la manera de hacer negocios»
 
-| Tiempo | Frames | Escena | Archivo |
-|---|---|---|---|
-| 0–3 s | 0–90 | Gancho | `src/orvix/scenes/S1Hook.tsx` |
-| 3–7 s | 90–210 | Universo Orvix | `S2Universe.tsx` |
-| 7–14 s | 210–420 | Servicios (web, Shopify, branding, marketing) | `S3Services.tsx` |
-| 14–20 s | 420–600 | Tecnología / agente IA conceptual | `S4Tech.tsx` |
-| 20–25 s | 600–750 | Convergencia | `S5Converge.tsx` |
-| 25–30 s | 750–900 | Cierre + CTA | `S6Close.tsx` |
+| Tiempo | Escena | Archivo |
+|---|---|---|
+| 0–5 s | **Inicio.** Trazos de precisión dibujan un marco; el logotipo se revela con una máscara. | `src/promo/scenes/P1Intro.tsx` |
+| 5–12 s | **Problema.** Herramientas dispersas, un bucle de copiar/pegar y conexiones rotas. «Tu negocio puede llegar más lejos.» | `P2Problem.tsx` + `Workspace.tsx` |
+| 12–18 s | **Transformación.** En el golpe musical las ventanas se alinean y se convierten en nodos conectados a un núcleo Orvix. «Diseñamos. Desarrollamos. Automatizamos.» | `P3Transform.tsx` |
+| 18–33 s | **Soluciones.** Web con scroll y navegación · Shopify con producto 3D, ficha y carrito · Branding y campañas · Agente de IA y flujo automatizado. | `P4Solutions.tsx` + `src/promo/solutions/*` |
+| 33–37 s | **Resultado.** Web, tienda y automatización en un mismo sistema. «Tecnología con propósito. Soluciones para avanzar.» | `P5Result.tsx` |
+| 37–43 s | **Cierre.** Logotipo sobre el azul de marca, «Hablemos de tu próximo proyecto.» y `orvixstudio.es`. | `P6Close.tsx` |
 
-- Tiempos centralizados en `src/orvix/theme.ts` (`T`), colores (`C`) y fuentes locales.
-- Logotipo oficial: `public/orvix-logo.png` (extraído del original, proporción 855×173 intacta).
-- Audio: `public/audio/orvix-soundtrack.wav`, pista original generada por `scripts/soundtrack.py` a 120 BPM;
-  todos los cortes caen en múltiplos de 15 frames. Para usar otra música, reemplaza el archivo o cambia `MUSIC` en `src/orvix/OrvixAd.tsx`.
-- Zonas seguras Reels/TikTok: textos clave entre y≈250 y y≈1500, márgenes laterales de 90 px.
-- Las interfaces (web, tienda, chat de reservas, analítica) son mockups conceptuales, sin cifras ni clientes reales.
+Las interfaces son demostraciones conceptuales con una marca genérica («tu marca», dominios `.demo`);
+no muestran clientes, cifras ni resultados reales.
+
+## Cómo cambiar…
+
+- **Logotipo:** sustituye `public/orvix-logo.png` (PNG blanco con fondo transparente). Si cambia la
+  proporción, actualiza `LOGO_RATIO` en `src/promo/kit.tsx`.
+- **Colores:** `P` en `src/promo/theme.ts` (`brand` es el azul del logotipo, `#040ADE`).
+- **Tipografías:** archivos en `public/fonts/` y `FONT`/`MONO` en `src/orvix/theme.ts`.
+- **Textos:** están en cada escena (`src/promo/scenes/*.tsx`) y en cada solución (`src/promo/solutions/*.tsx`).
+- **Duraciones:** `SCENES` y `SOL` en `src/promo/theme.ts` (si cambias el total, ajusta `TOTAL`).
+- **Música:** reemplaza `public/audio/orvix-promo-soundtrack.wav` o cambia `PROMO_MUSIC` en
+  `src/promo/Promo.tsx`. Los cortes caen en múltiplos de 15 frames (120 BPM).
+
+## Recursos y licencias
+
+| Recurso | Origen | Licencia |
+|---|---|---|
+| Logotipo `public/orvix-logo.png` | Extraído de la imagen oficial facilitada por Orvix Studio | Propiedad de Orvix Studio |
+| Space Grotesk (`public/fonts/space-grotesk-*`) | Florian Karsten, vía Fontsource | SIL Open Font License 1.1 |
+| JetBrains Mono (`public/fonts/jetbrains-mono-*`) | JetBrains, vía Fontsource | SIL Open Font License 1.1 |
+| Música y efectos (`public/audio/*.wav`) | Sintetizados por `scripts/*soundtrack.py` para este proyecto | Original, sin material de terceros |
+| Mockups, iconos, 3D | Creados con CSS/SVG en el propio código | Original |
+
+No se usan fotografías de stock, vídeos externos ni voz en off.
+
+Nota: `orvixstudio.es` no era accesible desde el entorno de producción, así que la identidad se
+tomó del logotipo oficial (azul `#040ADE` + wordmark blanco). Las tipografías son una elección
+propia; si la web usa otras, basta con cambiarlas en los archivos indicados.

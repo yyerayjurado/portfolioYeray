@@ -1,6 +1,8 @@
 import { Composition, Folder } from "remotion";
 import { OrvixAd } from "./orvix/OrvixAd";
 import { T } from "./orvix/theme";
+import { OrvixPromo } from "./promo/Promo";
+import { TOTAL } from "./promo/theme";
 import { S1Hook } from "./orvix/scenes/S1Hook";
 import { S2Universe } from "./orvix/scenes/S2Universe";
 import { S3Services } from "./orvix/scenes/S3Services";
@@ -12,6 +14,8 @@ const V = { width: 1080, height: 1920, fps: 30 };
 
 export const RemotionRoot: React.FC = () => (
   <>
+    <Composition id="OrvixPromo" component={OrvixPromo} durationInFrames={TOTAL} width={1920} height={1080} fps={30} />
+    <Composition id="OrvixPromoVertical" component={OrvixPromo} durationInFrames={TOTAL} width={1080} height={1920} fps={30} />
     <Composition id="OrvixAd" component={OrvixAd} durationInFrames={T.end} {...V} />
     <Folder name="OrvixAd-Escenas">
       <Composition id="S1-Gancho" component={S1Hook} durationInFrames={T.universe - T.hook} {...V} />
