@@ -124,7 +124,8 @@ def boundaries(text_parts, audio_dur, ps, weight):
     return cuts
 
 
-def main():
+def main(script=SCRIPT, name="welcome", srt_name="orvix-studio-bienvenida.srt", lead_in=LEAD_IN, tail=TAIL):
+    """Sintetiza `script` y escribe public/audio/{name}-voice.wav, src/{name}/timeline.json y video/{srt_name}."""
     args = sys.argv[1:]
     recorded = None
     if "--recorded" in args:
@@ -139,11 +140,11 @@ def main():
 
     weight = (lambda t: len(phon(t).replace(" ", ""))) if not recorded else (lambda t: len(t.replace(" ", "")))
 
-    voice = [np.zeros(int(LEAD_IN * SR_OUT), dtype=np.float32)]
-    t = LEAD_IN
+    voice = [np.zeros(int(lead_in * SR_OUT), dtype=np.float32)]
+    t = lead_in
     sentences, chunks, paragraphs, anchors = [], [], [], {}
     idx = 0
-    for pi, para in enumerate(SCRIPT):
+    for pi, para in enumerate(script):
         p_start = t
         for si, s in enumerate(para):
             display = " ".join(s["chunks"])
@@ -188,8 +189,8 @@ def main():
             idx += 1
             last = si == len(para) - 1
             gap = PAUSE_PARA if last else PAUSE_SENT
-            if pi == len(SCRIPT) - 1 and last:
-                gap = TAIL
+            if pi == len(script) - 1 and last:
+                gap = tail
             voice.append(np.zeros(int(gap * SR_OUT), dtype=np.float32))
             t += gap
         paragraphs.append({"start": round(p_start, 3), "end": round(sentences[-1]["end"], 3)})
@@ -197,7 +198,7 @@ def main():
     audio = np.concatenate(voice)
     peak = np.abs(audio).max()
     audio = audio / peak * 0.89
-    out = ROOT / "public/audio/welcome-voice.wav"
+    out = ROOT / f"public/audio/{name}-voice.wav"
     with wave.open(str(out), "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR_OUT)
         w.writeframes((audio * 32767).astype("<i2").tobytes())
@@ -206,8 +207,8 @@ def main():
     timeline = {"duration": round(total, 3), "fps": 30, "durationInFrames": int(np.ceil(total * 30)),
                 "sentences": sentences, "chunks": chunks, "paragraphs": paragraphs, "anchors": anchors,
                 "voice": "Kokoro-82M · em_alex · es" if not recorded else "grabación"}
-    (ROOT / "src/welcome").mkdir(parents=True, exist_ok=True)
-    (ROOT / "src/welcome/timeline.json").write_text(json.dumps(timeline, ensure_ascii=False, indent=2))
+    (ROOT / f"src/{name}").mkdir(parents=True, exist_ok=True)
+    (ROOT / f"src/{name}/timeline.json").write_text(json.dumps(timeline, ensure_ascii=False, indent=2))
 
     def ts(x):
         h, m, s = int(x // 3600), int(x % 3600 // 60), x % 60
@@ -215,7 +216,7 @@ def main():
 
     srt = "\n".join(f"{i + 1}\n{ts(c['start'])} --> {ts(c['end'])}\n{c['text']}\n" for i, c in enumerate(chunks))
     (ROOT / "video").mkdir(exist_ok=True)
-    (ROOT / "video/orvix-studio-bienvenida.srt").write_text(srt, encoding="utf-8")
+    (ROOT / "video" / srt_name).write_text(srt, encoding="utf-8")
     print(f"locución: {total:.2f} s · {len(sentences)} frases · {len(chunks)} subtítulos")
 
 

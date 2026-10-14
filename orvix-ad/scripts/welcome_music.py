@@ -104,63 +104,68 @@ def shimmer(dur=1.4):
     return s * env(n, 0.05, 0.5) * (0.6 + 0.4 * np.sin(2 * np.pi * 7 * x))
 
 
-# Progresión optimista en Do mayor: C – G – Am – F
-CH = [[48, 55, 60, 64], [43, 55, 59, 62], [45, 52, 57, 60], [41, 53, 57, 60]]
-ROOT_ = [36, 31, 33, 29]
-ARP = [[60, 64, 67, 72], [59, 62, 67, 71], [57, 60, 64, 69], [57, 60, 65, 69]]
-BAR = 2.0  # 120 BPM
+def main():
+    # Progresión optimista en Do mayor: C – G – Am – F
+    CH = [[48, 55, 60, 64], [43, 55, 59, 62], [45, 52, 57, 60], [41, 53, 57, 60]]
+    ROOT_ = [36, 31, 33, 29]
+    ARP = [[60, 64, 67, 72], [59, 62, 67, 71], [57, 60, 64, 69], [57, 60, 65, 69]]
+    BAR = 2.0  # 120 BPM
 
-music = Bus()
-end_music = DUR
-s_groove, s_ai, s_calm, s_close = P[2], P[4], P[5], P[6]
+    music = Bus()
+    end_music = DUR
+    s_groove, s_ai, s_calm, s_close = P[2], P[4], P[5], P[6]
 
-t = 0.0; bar = 0
-while t < end_music - 0.5:
-    c = bar % 4
-    # Pad durante toda la pieza (intro más suave)
-    music.add(pad(CH[c][1:], BAR + 0.4, att=0.6 if t > 1 else 1.5, rel=0.6, cut=0.03 if t < P[1] else 0.045), t, 0.22, pan=0.15 if bar % 2 else -0.15)
-    for k in range(8):
-        tt = t + k * 0.25
-        if tt >= end_music - 0.5: break
-        arp_on = tt >= 0.6
-        if arp_on:
-            m = ARP[c][k % 4] + (12 if (s_ai <= tt < s_calm) and k % 2 else 0)
-            music.add(pluck(m, 0.12 if tt < P[1] else 0.2), tt, 0.09, pan=-0.3 if k % 2 else 0.3)
-        drums = (P[1] <= tt < s_calm) or (s_close <= tt < LAST_END + 0.4)
-        light = tt < s_groove
-        if drums and k % 2 == 0:
-            beat = (k // 2)
-            if not light or beat in (0, 2):
-                music.add(kick(0.55 if light else 0.75), tt)
-            if not light and beat in (1, 3):
-                music.add(clap(), tt, 0.35)
-            music.add(bass(ROOT_[c] + 12), tt, 0.12 if light else 0.16)
-        if drums and k % 2 == 1:
-            music.add(hat(), tt, 0.1 if light else 0.14, pan=0.35)
-        if s_calm <= tt < s_close and k % 4 == 0:
-            music.add(bass(ROOT_[c] + 12, 0.5), tt, 0.1)
-    t += BAR; bar += 1
+    t = 0.0; bar = 0
+    while t < end_music - 0.5:
+        c = bar % 4
+        # Pad durante toda la pieza (intro más suave)
+        music.add(pad(CH[c][1:], BAR + 0.4, att=0.6 if t > 1 else 1.5, rel=0.6, cut=0.03 if t < P[1] else 0.045), t, 0.22, pan=0.15 if bar % 2 else -0.15)
+        for k in range(8):
+            tt = t + k * 0.25
+            if tt >= end_music - 0.5: break
+            arp_on = tt >= 0.6
+            if arp_on:
+                m = ARP[c][k % 4] + (12 if (s_ai <= tt < s_calm) and k % 2 else 0)
+                music.add(pluck(m, 0.12 if tt < P[1] else 0.2), tt, 0.09, pan=-0.3 if k % 2 else 0.3)
+            drums = (P[1] <= tt < s_calm) or (s_close <= tt < LAST_END + 0.4)
+            light = tt < s_groove
+            if drums and k % 2 == 0:
+                beat = (k // 2)
+                if not light or beat in (0, 2):
+                    music.add(kick(0.55 if light else 0.75), tt)
+                if not light and beat in (1, 3):
+                    music.add(clap(), tt, 0.35)
+                music.add(bass(ROOT_[c] + 12), tt, 0.12 if light else 0.16)
+            if drums and k % 2 == 1:
+                music.add(hat(), tt, 0.1 if light else 0.14, pan=0.35)
+            if s_calm <= tt < s_close and k % 4 == 0:
+                music.add(bass(ROOT_[c] + 12, 0.5), tt, 0.1)
+        t += BAR; bar += 1
 
-# Cierre: subida suave y resolución final tras la última frase
-music.add(whoosh(1.2) * np.linspace(0, 1, int(1.2 * SR)), s_close - 1.2, 0.25)
-res = LAST_END + 0.5
-music.add(pad([36, 48, 55, 60, 64, 67, 72], DUR - res, att=0.05, rel=2.6, cut=0.06), res, 0.45)
-music.add(kick(1.0), res)
-for i, m in enumerate([72, 79, 84]):
-    music.add(bell(hz(m), 4.0), res + 0.02 + i * 0.1, 0.12)
-music.write(ROOT / "public/audio/welcome-music.wav", fade_end=2.2)
+    # Cierre: subida suave y resolución final tras la última frase
+    music.add(whoosh(1.2) * np.linspace(0, 1, int(1.2 * SR)), s_close - 1.2, 0.25)
+    res = LAST_END + 0.5
+    music.add(pad([36, 48, 55, 60, 64, 67, 72], DUR - res, att=0.05, rel=2.6, cut=0.06), res, 0.45)
+    music.add(kick(1.0), res)
+    for i, m in enumerate([72, 79, 84]):
+        music.add(bell(hz(m), 4.0), res + 0.02 + i * 0.1, 0.12)
+    music.write(ROOT / "public/audio/welcome-music.wav", fade_end=2.2)
 
-# Efectos discretos (no se atenúan con la voz)
-sfx = Bus()
-sfx.add(shimmer(1.6), 0.3, 0.35)                  # aparición del logotipo
-sfx.add(bell(hz(84), 2.0), 0.35, 0.12)
-for c in CUT[1:]:
-    sfx.add(whoosh(0.6), c - 0.3, 0.35)           # transiciones entre escenas
-shop = next(x["start"] for x in TL["chunks"] if x["text"].startswith("Creamos tiendas"))
-sfx.add(bell(hz(91), 0.4), shop + 1.6, 0.08)      # «Añadir al carrito»
-auto0 = next(x["start"] for x in TL["chunks"] if x["text"].startswith("incorporamos"))
-for i in range(5):
-    sfx.add(bell(hz(88 + (i % 3) * 2), 0.3), auto0 + i * 1.4, 0.05)  # nodos del flujo
-sfx.add(shimmer(1.8), s_close - 0.4, 0.4)          # logotipo final
-sfx.write(ROOT / "public/audio/welcome-sfx.wav", peak=0.6, fade_end=1.0)
-print("ok", DUR)
+    # Efectos discretos (no se atenúan con la voz)
+    sfx = Bus()
+    sfx.add(shimmer(1.6), 0.3, 0.35)                  # aparición del logotipo
+    sfx.add(bell(hz(84), 2.0), 0.35, 0.12)
+    for c in CUT[1:]:
+        sfx.add(whoosh(0.6), c - 0.3, 0.35)           # transiciones entre escenas
+    shop = next(x["start"] for x in TL["chunks"] if x["text"].startswith("Creamos tiendas"))
+    sfx.add(bell(hz(91), 0.4), shop + 1.6, 0.08)      # «Añadir al carrito»
+    auto0 = next(x["start"] for x in TL["chunks"] if x["text"].startswith("incorporamos"))
+    for i in range(5):
+        sfx.add(bell(hz(88 + (i % 3) * 2), 0.3), auto0 + i * 1.4, 0.05)  # nodos del flujo
+    sfx.add(shimmer(1.8), s_close - 0.4, 0.4)          # logotipo final
+    sfx.write(ROOT / "public/audio/welcome-sfx.wav", peak=0.6, fade_end=1.0)
+    print("ok", DUR)
+
+
+if __name__ == "__main__":
+    main()

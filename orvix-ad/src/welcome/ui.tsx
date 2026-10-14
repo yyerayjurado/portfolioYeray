@@ -133,11 +133,12 @@ export const Title: React.FC<{ text: string; at: number; size: number; step?: nu
 };
 
 // Subtítulos sincronizados con la locución (tiempos de src/welcome/timeline.json).
-export const Subtitles: React.FC = () => {
+type Chunk = { text: string; start: number; end: number };
+export const Subtitles: React.FC<{ chunks?: Chunk[]; size?: number }> = ({ chunks = TL.chunks, size }) => {
   const f = useCurrentFrame();
   const { V, Wd, Ht } = useV();
   const t = f / 30;
-  const cur = TL.chunks.find((c) => t >= c.start - 0.08 && t < c.end + 0.02);
+  const cur = chunks.find((c) => t >= c.start - 0.08 && t < c.end + 0.02);
   if (!cur) return null;
   const a = sec(cur.start - 0.08);
   const b = sec(cur.end + 0.02);
@@ -164,7 +165,7 @@ export const Subtitles: React.FC = () => {
           color: W.white,
           fontFamily: FONT,
           fontWeight: 500,
-          fontSize: V ? 44 : 42,
+          fontSize: size ?? (V ? 44 : 42),
           lineHeight: 1.3,
           textAlign: "center",
           textShadow: "0 2px 6px rgba(0,0,0,0.35)",

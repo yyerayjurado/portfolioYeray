@@ -5,6 +5,7 @@ import { OrvixPromo } from "./promo/Promo";
 import { TOTAL } from "./promo/theme";
 import { OrvixCinematic } from "./cinematic/Cinematic";
 import { OrvixWelcome, WELCOME_FRAMES } from "./welcome/Welcome";
+import { ABOUT_FRAMES, OrvixAbout } from "./about/About";
 import { TOTAL as CINE_TOTAL } from "./cinematic/theme";
 import { S1Hook } from "./orvix/scenes/S1Hook";
 import { S2Universe } from "./orvix/scenes/S2Universe";
@@ -17,6 +18,7 @@ const V = { width: 1080, height: 1920, fps: 30 };
 
 export const RemotionRoot: React.FC = () => (
   <>
+    <Composition id="OrvixAbout" component={OrvixAbout} durationInFrames={ABOUT_FRAMES} width={1920} height={1080} fps={30} />
     <Composition id="OrvixWelcome" component={OrvixWelcome} durationInFrames={WELCOME_FRAMES} width={1920} height={1080} fps={30} />
     <Composition id="OrvixWelcomeVertical" component={OrvixWelcome} durationInFrames={WELCOME_FRAMES} width={1080} height={1920} fps={30} />
     <Composition id="OrvixCinematic" component={OrvixCinematic} durationInFrames={CINE_TOTAL} width={1920} height={1080} fps={30} />

@@ -1,9 +1,10 @@
 # ORVIX STUDIO · Vídeos promocionales (Remotion)
 
-Proyecto Remotion con cuatro piezas:
+Proyecto Remotion con cinco piezas:
 
 | Composición | Formato | Duración | Vídeo renderizado |
 |---|---|---|---|
+| `OrvixAbout` | 1920×1080 · 16:9 · 30 fps | 67,9 s (2038 frames) | `video/orvix-studio-quienes-somos.mp4` + `video/orvix-studio-quienes-somos.srt` |
 | `OrvixWelcome` | 1920×1080 · 16:9 · 30 fps | 76,2 s (2287 frames) | `video/orvix-studio-bienvenida-16x9.mp4` + `video/orvix-studio-bienvenida.srt` |
 | `OrvixWelcomeVertical` | 1080×1920 · 9:16 · 30 fps | 76,2 s | `video/orvix-studio-bienvenida-9x16.mp4` |
 | `OrvixCinematic` | 1920×1080 · 16:9 · 30 fps | 40 s (1200 frames) | `video/orvix-studio-cinematic-16x9.mp4` |
@@ -26,6 +27,31 @@ npx remotion render OrvixPromoVertical out/orvix-studio-promo-9x16.mp4 --codec=h
 npx remotion still  OrvixPromo out/frame.png --frame=1250            # fotograma suelto
 python3 scripts/promo_soundtrack.py              # regenera la música (requiere numpy)
 ```
+
+## OrvixAbout — «Quiénes somos» (motion graphics, locución y subtítulos)
+
+Pieza de identidad construida solo con motion graphics (puntos, líneas, módulos y tipografía cinética) sobre
+azul `#1010FF` y blanco. Duración ampliada a 67,9 s para no acelerar la locución; las escenas se adaptan al audio.
+
+```bash
+python3 scripts/about_voiceover.py /ruta/a/modelos-kokoro      # locución + src/about/timeline.json + SRT
+python3 scripts/about_music.py                                 # música y efectos sincronizados con la voz
+python3 scripts/verify_subtitles.py /ruta/sherpa-onnx-whisper-small about   # verificación opcional
+npx remotion render OrvixAbout out/quienes-somos.mp4 --codec=h264 --crf=18
+```
+
+| Escena | Locución | Archivo (`src/about/scenes/`) |
+|---|---|---|
+| 1 · Las ideas nacen | «En un mundo donde la tecnología evoluciona…» | `A1Ideas.tsx` |
+| 2 · Orvix Studio | «Somos Orvix Studio, un estudio digital…» · CREATIVIDAD / DISEÑO / TECNOLOGÍA | `A2Brand.tsx` |
+| 3 · Nuestra forma de pensar | «Creemos que cada proyecto tiene algo único…» · IDEAS QUE SE CONVIERTEN EN REALIDAD | `A3Thinking.tsx` |
+| 4 · Nuestra filosofía | «No se trata únicamente…» · PENSAR / CREAR / TRANSFORMAR | `A4Philosophy.tsx` |
+| 5 · Miramos hacia delante | «Miramos hacia delante…» | `A5Forward.tsx` |
+| 6 · Cierre de marca | «Somos Orvix Studio. Ideas que evolucionan. Tecnología que construye el futuro.» | `A6Close.tsx` |
+
+Las palabras animadas se sincronizan con las palabras del locutor mediante `CUES` (`src/about/theme.ts`),
+calculadas a partir del audio. Tipografía cinética en `src/about/ui.tsx` (`DropWord`, `WipeWord`, `DecodeWord`).
+Para usar un locutor humano: `python3 scripts/about_voiceover.py --recorded carpeta` (archivos `00.wav`…`10.wav`).
 
 ## OrvixWelcome — vídeo oficial de bienvenida (con locución y subtítulos)
 
