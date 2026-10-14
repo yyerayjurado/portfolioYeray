@@ -1,9 +1,11 @@
 # ORVIX STUDIO · Vídeos promocionales (Remotion)
 
-Proyecto Remotion con dos piezas:
+Proyecto Remotion con tres piezas:
 
 | Composición | Formato | Duración | Vídeo renderizado |
 |---|---|---|---|
+| `OrvixCinematic` | 1920×1080 · 16:9 · 30 fps | 40 s (1200 frames) | `video/orvix-studio-cinematic-16x9.mp4` |
+| `OrvixCinematicVertical` | 1080×1920 · 9:16 · 30 fps | 40 s (1200 frames) | `video/orvix-studio-cinematic-9x16.mp4` |
 | `OrvixPromo` | 1920×1080 · 16:9 · 30 fps | 43 s (1290 frames) | `video/orvix-studio-promo-16x9.mp4` |
 | `OrvixPromoVertical` | 1080×1920 · 9:16 · 30 fps | 43 s (1290 frames) | `video/orvix-studio-promo-9x16.mp4` |
 | `OrvixAd` (anuncio anterior) | 1080×1920 · 9:16 · 30 fps | 30 s (900 frames) | `video/orvix-studio-anuncio-9x16.mp4` |
@@ -23,7 +25,28 @@ npx remotion still  OrvixPromo out/frame.png --frame=1250            # fotograma
 python3 scripts/promo_soundtrack.py              # regenera la música (requiere numpy)
 ```
 
-## Concepto: «La tecnología adecuada transforma la manera de hacer negocios»
+## OrvixCinematic — anuncio cinematográfico (40 s)
+
+```bash
+npx remotion render OrvixCinematic         out/orvix-studio-cinematic-16x9.mp4 --codec=h264 --crf=18
+npx remotion render OrvixCinematicVertical out/orvix-studio-cinematic-9x16.mp4 --codec=h264 --crf=18
+python3 scripts/cinematic_soundtrack.py      # regenera la música (requiere numpy)
+```
+
+| Tiempo | Escena | Archivo (`src/cinematic/scenes/`) |
+|---|---|---|
+| 00:00–00:05 | Introducción · «TODO EMPIEZA CON UNA IDEA» (2 s), transición a los 4 s | `C1Intro.tsx` |
+| 00:05–00:11 | El mundo digital · cámara sobre web, tienda e identidad · «DISEÑO QUE CONECTA» → «TECNOLOGÍA QUE IMPULSA» | `C2Digital.tsx` |
+| 00:11–00:18 | Automatización e IA · solicitud → recepción → agente IA → CRM/agenda → respuesta automática | `C3Automation.tsx` |
+| 00:18–00:26 | Clímax · cortes en cada beat · DISEÑAMOS (22 s) · DESARROLLAMOS (23 s) · AUTOMATIZAMOS (24 s) · convergencia (25 s) | `C4Climax.tsx` |
+| 00:26–00:33 | Revelación del logotipo · «ORVIX STUDIO» · «SOLUCIONES DIGITALES PARA NEGOCIOS QUE AVANZAN» | `C5Reveal.tsx` |
+| 00:33–00:40 | Cierre · «TU PRÓXIMA IDEA EMPIEZA AQUÍ» · `orvixstudio.es` · fundido a negro | `C6Close.tsx` |
+
+- Tiempos y golpes centralizados en `src/cinematic/theme.ts` (`SC`, `HITS`); la música usa los mismos frames.
+- Piezas de interfaz reutilizables con reloj propio en `src/cinematic/pieces.tsx` (web, tienda, identidad, flujo).
+- Música: `public/audio/orvix-cinematic-soundtrack.wav` (cambia `CINEMATIC_MUSIC` en `src/cinematic/Cinematic.tsx`).
+
+## Concepto de OrvixPromo: «La tecnología adecuada transforma la manera de hacer negocios»
 
 | Tiempo | Escena | Archivo |
 |---|---|---|
