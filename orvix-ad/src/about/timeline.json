@@ -1,0 +1,218 @@
+{
+  "duration": 67.903,
+  "fps": 30,
+  "durationInFrames": 2038,
+  "sentences": [
+    {
+      "text": "En un mundo donde la tecnología evoluciona constantemente, las ideas necesitan algo más que imaginación.",
+      "start": 2.2,
+      "end": 8.74,
+      "para": 0
+    },
+    {
+      "text": "Necesitan visión, creatividad y la capacidad de convertirlas en realidad.",
+      "start": 9.16,
+      "end": 13.63,
+      "para": 0
+    },
+    {
+      "text": "Somos Orvix Studio, un estudio digital donde el diseño y la tecnología se unen para crear nuevas posibilidades.",
+      "start": 14.48,
+      "end": 21.58,
+      "para": 1
+    },
+    {
+      "text": "Creemos que cada proyecto tiene algo único.",
+      "start": 22.43,
+      "end": 25.26,
+      "para": 2
+    },
+    {
+      "text": "Por eso, combinamos pensamiento creativo, innovación y desarrollo para construir soluciones adaptadas a las necesidades de cada negocio.",
+      "start": 25.68,
+      "end": 34.0,
+      "para": 2
+    },
+    {
+      "text": "No se trata únicamente de crear algo visualmente atractivo.",
+      "start": 34.85,
+      "end": 38.89,
+      "para": 3
+    },
+    {
+      "text": "Se trata de encontrar nuevas formas de hacer las cosas, simplificar procesos y transformar ideas en herramientas útiles.",
+      "start": 39.31,
+      "end": 46.6,
+      "para": 3
+    },
+    {
+      "text": "Miramos hacia delante, exploramos nuevas posibilidades y trabajamos para conectar creatividad y tecnología con un propósito claro.",
+      "start": 47.45,
+      "end": 55.44,
+      "para": 4
+    },
+    {
+      "text": "Somos Orvix Studio.",
+      "start": 56.29,
+      "end": 57.901,
+      "para": 5
+    },
+    {
+      "text": "Ideas que evolucionan.",
+      "start": 58.321,
+      "end": 59.773,
+      "para": 5
+    },
+    {
+      "text": "Tecnología que construye el futuro.",
+      "start": 60.193,
+      "end": 62.403,
+      "para": 5
+    }
+  ],
+  "chunks": [
+    {
+      "text": "En un mundo donde la tecnología evoluciona constantemente,",
+      "start": 2.2,
+      "end": 5.8
+    },
+    {
+      "text": "las ideas necesitan algo más que imaginación.",
+      "start": 5.8,
+      "end": 8.74
+    },
+    {
+      "text": "Necesitan visión, creatividad",
+      "start": 9.16,
+      "end": 11.36
+    },
+    {
+      "text": "y la capacidad de convertirlas en realidad.",
+      "start": 11.36,
+      "end": 13.63
+    },
+    {
+      "text": "Somos Orvix Studio, un estudio digital",
+      "start": 14.48,
+      "end": 17.19
+    },
+    {
+      "text": "donde el diseño y la tecnología se unen",
+      "start": 17.19,
+      "end": 19.73
+    },
+    {
+      "text": "para crear nuevas posibilidades.",
+      "start": 19.73,
+      "end": 21.58
+    },
+    {
+      "text": "Creemos que cada proyecto tiene algo único.",
+      "start": 22.43,
+      "end": 25.26
+    },
+    {
+      "text": "Por eso, combinamos pensamiento creativo, innovación y desarrollo",
+      "start": 25.68,
+      "end": 30.13
+    },
+    {
+      "text": "para construir soluciones adaptadas a las necesidades de cada negocio.",
+      "start": 30.13,
+      "end": 34.0
+    },
+    {
+      "text": "No se trata únicamente de crear algo visualmente atractivo.",
+      "start": 34.85,
+      "end": 38.89
+    },
+    {
+      "text": "Se trata de encontrar nuevas formas de hacer las cosas,",
+      "start": 39.31,
+      "end": 42.6
+    },
+    {
+      "text": "simplificar procesos",
+      "start": 42.6,
+      "end": 44.04
+    },
+    {
+      "text": "y transformar ideas en herramientas útiles.",
+      "start": 44.04,
+      "end": 46.6
+    },
+    {
+      "text": "Miramos hacia delante, exploramos nuevas posibilidades",
+      "start": 47.45,
+      "end": 50.858
+    },
+    {
+      "text": "y trabajamos para conectar creatividad y tecnología",
+      "start": 50.858,
+      "end": 54.16
+    },
+    {
+      "text": "con un propósito claro.",
+      "start": 54.16,
+      "end": 55.44
+    },
+    {
+      "text": "Somos Orvix Studio.",
+      "start": 56.29,
+      "end": 57.901
+    },
+    {
+      "text": "Ideas que evolucionan.",
+      "start": 58.321,
+      "end": 59.773
+    },
+    {
+      "text": "Tecnología que construye el futuro.",
+      "start": 60.193,
+      "end": 62.403
+    }
+  ],
+  "paragraphs": [
+    {
+      "start": 2.2,
+      "end": 13.63
+    },
+    {
+      "start": 14.48,
+      "end": 21.58
+    },
+    {
+      "start": 22.43,
+      "end": 34.0
+    },
+    {
+      "start": 34.85,
+      "end": 46.6
+    },
+    {
+      "start": 47.45,
+      "end": 55.44
+    },
+    {
+      "start": 56.29,
+      "end": 62.403
+    }
+  ],
+  "anchors": {
+    "visión": 9.807,
+    "creatividad": 10.54,
+    "convertirlas": 12.101,
+    "diseño": 17.663,
+    "tecnología": 18.275,
+    "pensamiento": 26.869,
+    "innovación": 28.29,
+    "desarrollo": 29.067,
+    "crear": 36.572,
+    "encontrar": 40.001,
+    "simplificar": 42.62,
+    "transformar": 44.023,
+    "exploramos": 48.57,
+    "conectar": 51.915
+  },
+  "voice": "Kokoro-82M · em_alex · es"
+}
